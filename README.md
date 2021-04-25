@@ -11,8 +11,8 @@
 
 2 自动化获取现象、持久化机制、痕迹
 
-    2.1 创建检查结果文件夹，修改保存路径【E:\20210422】。
-	   2.2 打开cmd复制以下内容并回车，结尾多复制一个空行。
+    2.1 创建检查结果文件夹，修改保存路径【E:\20210101】。
+    2.2 打开cmd复制以下内容并回车，结尾多复制一个空行。
           netstat -ano | findstr LIST > E:\20210101\1-listening.log
           netstat -ano | findstr EST > E:\20210101\2-established.log
           netstat -ano | findstr SYN > E:\20210101\3-synSent.log
@@ -29,6 +29,7 @@
           net localgroup administrators >> E:\20210101\11-user.log
           copy %SystemRoot%\System32\Winevt\Logs\Security.evtx E:\20210101\12-security.evtx
           copy %SystemRoot%\System32\Winevt\Logs\System.evtx E:\20210101\13-system.evtx
+	  
 
 
 3 手动获取痕迹

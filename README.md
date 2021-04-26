@@ -12,24 +12,26 @@
 2 自动化获取现象、持久化机制、痕迹
 
     2.1 创建检查结果文件夹，修改保存路径【E:\20210101】。
-    2.2 打开cmd复制以下内容并回车，结尾多复制一个空行。
-          netstat -ano | findstr LIST > E:\20210101\1-listening.log
-          netstat -ano | findstr EST > E:\20210101\2-established.log
-          netstat -ano | findstr SYN > E:\20210101\3-synSent.log
-          netstat -ano | findstr WAIT > E:\20210101\4-timeWait.log
-          wmic process get caption,commandline,creationDate,executablepath,handle,ParentProcessId > E:\20210101\5-process.log
-          schtasks /query /fo LIST /v > E:\20210101\6-cron.log
-          reg export HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run E:\20210101\7-autoRun.log
-          set > E:\20210101\8-set.log
-          reg query "HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Services" /s > E:\20210101\9-service_001.log
-          reg query HKEY_CURRENT_USER\Environment /v UserInitMprLogonScript > E:\20210101\10-userLogin.log
-          reg query "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon" /v Userinit >> E:\20210101\10-userLogin.log
-          reg export HKEY_LOCAL_MACHINE\SAM\SAM\Domains\Account\Users E:\20210101\11-user.log
-          net user >> E:\20210101\11-user.log
-          net localgroup administrators >> E:\20210101\11-user.log
-          copy %SystemRoot%\System32\Winevt\Logs\Security.evtx E:\20210101\12-security.evtx
-          copy %SystemRoot%\System32\Winevt\Logs\System.evtx E:\20210101\13-system.evtx
-	  
+    2.2 用管理员打开cmd复制以下内容并回车，结尾多复制一个空行。
+	netstat -ano | findstr LIST > E:\20210101\1-listening.log
+	netstat -ano | findstr EST > E:\20210101\2-established.log
+	netstat -ano | findstr SYN > E:\20210101\3-synSent.log
+	netstat -ano | findstr WAIT > E:\20210101\4-timeWait.log
+	wmic process get caption,commandline,creationDate,executablepath,handle,ParentProcessId > E:\20210101\5-process.log
+
+	schtasks /query /fo LIST /v > E:\20210101\6-cron.log
+	reg export HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run E:\20210101\7-1autoRun.log
+	reg query "HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\RunOnce" >> E:\20210101\7-2autoRun.log
+	reg query "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Run" >> E:\20210101\7-3autoRun.log
+	set > E:\20210101\8-set.log
+	reg query "HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Services" /s > E:\20210101\9-service_001.log
+	reg query HKEY_CURRENT_USER\Environment /v UserInitMprLogonScript > E:\20210101\10-userLogin.log
+	reg query "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon" /v Userinit >> E:\20210101\10-userLogin.log
+	reg export HKEY_LOCAL_MACHINE\SAM\SAM\Domains\Account\Users E:\20210101\11-user.log
+	net user >> E:\20210101\11-user.log
+	net localgroup administrators >> E:\20210101\11-user.log
+	copy %SystemRoot%\System32\Winevt\Logs\Security.evtx E:\20210101\12-security.evtx
+	copy %SystemRoot%\System32\Winevt\Logs\System.evtx E:\20210101\13-system.evtx 
 
 
 3 手动获取痕迹
